@@ -159,6 +159,7 @@ repositories {
 }
 
 tasks.withType<org.gradle.jvm.tasks.Jar> {
+    exclude("org/apache/log4j/jdbc/**")
     archiveClassifier.set("real")
 }
 
@@ -168,6 +169,7 @@ tasks.withType<ShadowJar>().configureEach {
     }
     exclude("kotlin/**")
     exclude("kotlinx/coroutines/**")
+    exclude("org/apache/log4j/jdbc/**")
     archiveClassifier.set("")
     mergeServiceFiles()
 }
@@ -198,7 +200,7 @@ abstract class ValidateShadowJar : DefaultTask() {
                 )
                 standardOutput = stdout
             }
-        } catch (e: org.gradle.process.internal.ExecException) {
+        } catch (_: org.gradle.process.internal.ExecException) {
             throw Exception("Unable to run jdeps")
         }
         val actualOutput = stdout.toString()
