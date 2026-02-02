@@ -744,5 +744,6 @@ package com.google.devtools.ksp.visitor {
     method @NonNull public Boolean visitValueParameter(@NonNull com.google.devtools.ksp.symbol.KSValueParameter valueParameter, @Nullable com.google.devtools.ksp.symbol.KSNode data);
   }
 
+
 }
 
